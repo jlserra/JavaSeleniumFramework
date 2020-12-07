@@ -25,16 +25,6 @@
     <list default="true" id="6e348183-8230-4cc0-a76f-ddd5d0174319" name="Default Changelist" comment="Adjustments to separate framework from testcases">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGBBAPPAutomation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SGBBAPPAutomation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pageobjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobjects/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pageobjects/UiCatalogPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobjects/UiCatalogPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/ActionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/ActionUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/ConfigReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/android.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/android.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/selendroid.apk" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/selendroid.apk" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +74,14 @@
       <option name="presentableId" value="Default" />
       <updated>1607331509313</updated>
     </task>
+    <task id="LOCAL-00001" summary="Adjustments to separate framework from testcases">
+      <created>1607334670079</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607334670079</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +125,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="378" y="198" key="Maven.ArtifactSearchDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607334535725" />
+    <state x="440" y="263" key="Vcs.Push.Dialog.v2" timestamp="1607334677093">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="440" y="263" key="Vcs.Push.Dialog.v2/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607334677093" />
     <state x="208" y="199" key="new project wizard" timestamp="1607333646203">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
