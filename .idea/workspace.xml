@@ -23,13 +23,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e348183-8230-4cc0-a76f-ddd5d0174319" name="Default Changelist" comment="Adjustments to separate framework from testcases">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageobjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobjects/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageobjects/UiCatalogPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobjects/SamplePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/ActionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/ActionUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/LoggerUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testcases/BaseTestcase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testcases/BaseTestcase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testcases/UICatalogTestcase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testcases/SampleTestCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +55,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1lK2Y43rZPQ5x5iR71cq3TluGCD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,10 +66,12 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.5574713" />
+    <property name="settings.editor.selected.configurable" value="file.status.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -64,6 +82,49 @@
       <recent name="$PROJECT_DIR$/logs" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager" selected="TestNG.LoginTestCase.loginUser">
+    <configuration name="LoginTestCase" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="SGBBAPPAutomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testcases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testcases" />
+      <option name="MAIN_CLASS_NAME" value="testcases.LoginTestCase" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTestCase.loginUser" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="SGBBAPPAutomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testcases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testcases" />
+      <option name="MAIN_CLASS_NAME" value="testcases.LoginTestCase" />
+      <option name="METHOD_NAME" value="loginUser" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.LoginTestCase.loginUser" />
+        <item itemvalue="TestNG.LoginTestCase" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -101,14 +162,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Adjustments to separate framework from testcases" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="328" y="118" key="#Project_Structure" timestamp="1607333008235">
+    <state x="328" y="118" key="#Project_Structure" timestamp="1607347691322">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="328" y="118" key="#Project_Structure/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333008235" />
+    <state x="328" y="118" key="#Project_Structure/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607347691322" />
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607331582615">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607331582615" />
+    <state x="653" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1607344287631">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="653" y="259" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607344287631" />
     <state x="578" y="320" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1607333877502">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -121,17 +186,76 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="610" y="425" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333915287" />
-    <state x="378" y="198" key="Maven.ArtifactSearchDialog" timestamp="1607334535725">
+    <state x="414" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607339871630">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="378" y="198" key="Maven.ArtifactSearchDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607334535725" />
+    <state x="414" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607339871630" />
+    <state x="578" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607339859835">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="578" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607339859835" />
+    <state x="100" y="123" width="1480" height="827" key="DiffContextDialog" timestamp="1607336598304">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="100" y="123" width="1480" height="827" key="DiffContextDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607336598304" />
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom" timestamp="1607349879841">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607349879841" />
+    <state width="1638" height="280" key="GridCell.Tab.0.center" timestamp="1607349879840">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607349879840" />
+    <state width="1638" height="280" key="GridCell.Tab.0.left" timestamp="1607349879839">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607349879839" />
+    <state width="1638" height="280" key="GridCell.Tab.0.right" timestamp="1607349879840">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607349879840" />
+    <state x="378" y="198" key="Maven.ArtifactSearchDialog" timestamp="1607347546624">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="378" y="198" key="Maven.ArtifactSearchDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607347546624" />
+    <state x="569" y="246" key="RollbackChangesDialog" timestamp="1607339127121">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="569" y="246" key="RollbackChangesDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607339127121" />
+    <state x="341" y="175" key="SettingsEditor" timestamp="1607339116060">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="341" y="175" key="SettingsEditor/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607339116060" />
+    <state x="610" y="457" key="VCS.ChangelistChooser" timestamp="1607336862453">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="610" y="457" key="VCS.ChangelistChooser/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607336862453" />
     <state x="440" y="263" key="Vcs.Push.Dialog.v2" timestamp="1607334677093">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="440" y="263" key="Vcs.Push.Dialog.v2/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607334677093" />
+    <state x="517" y="310" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1607346112032">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="517" y="310" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607346112032" />
+    <state x="578" y="292" key="extract.method.dialog" timestamp="1607344883047">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="578" y="292" key="extract.method.dialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607344883047" />
     <state x="208" y="199" key="new project wizard" timestamp="1607333646203">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="208" y="199" key="new project wizard/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333646203" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1607349836811">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607349836811" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="TestNG">
+        <watch expression="driver" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

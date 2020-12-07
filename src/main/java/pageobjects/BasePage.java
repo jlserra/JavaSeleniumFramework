@@ -1,20 +1,23 @@
 package pageobjects;
 
 import io.appium.java_client.MobileDriver;
-
-import org.apache.log4j.Logger;
+import utilities.ActionUtilities;
+import utilities.LoggerUtilities;
 
 public class BasePage {
 
-    protected MobileDriver driver;
+    static MobileDriver driver;
+    static LoggerUtilities log;
+    static ActionUtilities action;
 
-    static Logger log = Logger.getLogger("test");
-
-    public BasePage() {
+    public BasePage(){
+        super();
     }
 
-    public BasePage(MobileDriver driver) {
+    public BasePage(MobileDriver driver, ActionUtilities action, LoggerUtilities log) {
         this.driver = driver;
+        this.log = log;
+        this.action = action;
     }
 
 }

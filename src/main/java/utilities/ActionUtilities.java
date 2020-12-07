@@ -11,13 +11,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ActionUtilities {
 
     static MobileDriver driver;
-
     static int explicitWaitDefault = 10;
     static int implicitWaitDefault = 10;
 
@@ -50,23 +50,23 @@ public class ActionUtilities {
                 .until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public static void takeSnapShot(String name) throws Exception {
+    public static void takeSnapShot(String name) throws IOException {
 
-        // Convert web driver object to TakeScreenshot
+            // Convert web driver object to TakeScreenshot
 
-        TakesScreenshot scrShot = ((TakesScreenshot) driver);
+            TakesScreenshot scrShot = ((TakesScreenshot) driver);
 
-        // Call getScreenshotAs method to create image file
+            // Call getScreenshotAs method to create image file
 
-        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+            File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
-        // Move image file to new destination
+            // Move image file to new destination
 
-        File DestFile = new File("./screenshots/" + name + ".png");
+            File DestFile = new File("./screenshots/" + name + ".png");
 
-        // Copy file at destination
+            // Copy file at destination
 
-        FileUtils.copyFile(SrcFile, DestFile);
+            FileUtils.copyFile(SrcFile, DestFile);
 
     }
 
