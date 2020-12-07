@@ -22,7 +22,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e348183-8230-4cc0-a76f-ddd5d0174319" name="Default Changelist" comment="" />
+    <list default="true" id="6e348183-8230-4cc0-a76f-ddd5d0174319" name="Default Changelist" comment="Adjustments to separate framework from testcases">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGBBAPPAutomation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SGBBAPPAutomation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pageobjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobjects/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pageobjects/UiCatalogPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobjects/UiCatalogPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/ActionUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/ActionUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/ConfigReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/android.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/android.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/selendroid.apk" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/selendroid.apk" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,11 +57,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.5574713" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/logs" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -74,11 +96,40 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adjustments to separate framework from testcases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjustments to separate framework from testcases" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="328" y="118" key="#Project_Structure" timestamp="1607333008235">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="328" y="118" key="#Project_Structure/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333008235" />
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607331582615">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607331582615" />
+    <state x="578" y="320" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1607333877502">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="578" y="320" key="#com.intellij.ide.util.PackageChooserDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333877502" />
+    <state x="432" y="468" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1607333910539">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="432" y="468" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333910539" />
+    <state x="610" y="425" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1607333915287">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="610" y="425" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333915287" />
+    <state x="378" y="198" key="Maven.ArtifactSearchDialog" timestamp="1607334535725">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="378" y="198" key="Maven.ArtifactSearchDialog/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607334535725" />
+    <state x="208" y="199" key="new project wizard" timestamp="1607333646203">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="208" y="199" key="new project wizard/0.23.1680.1027/-575.-1417.2560.1417@0.23.1680.1027" timestamp="1607333646203" />
   </component>
 </project>
