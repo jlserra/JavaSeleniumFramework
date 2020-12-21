@@ -1,9 +1,11 @@
 # Default ignored files
 /shelf/
+/.idea/
 target
 allure-results
 screenshots
 logs
 .DS_Store
-
-
+SGBBAPPAutomation.iml
+/.idea/
+allure-report
