@@ -6,6 +6,11 @@ allure-results
 screenshots
 logs
 .DS_Store
+<<<<<<< HEAD
 SGBBAPPAutomation.iml
 /.idea/
 allure-report
+=======
+.gitignore
+/.idea/
+
