@@ -10,11 +10,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
-public class LoginPage extends BasePage{
+public class WelcomePage extends BasePage{
 
-    public LoginPage(MobileDriver driver) {
+    public WelcomePage(MobileDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
+
+    private String keypadPartialExpath = "//android.widget.Button[@resource-id='ph.com.globe.mybusiness:id/spbtn_pin_key_";
+
 
     @AndroidFindBy(id = "ph.com.globe.mybusiness:id/spbtn_submit")
     @iOSXCUITFindBy(id = "a")
@@ -28,9 +31,19 @@ public class LoginPage extends BasePage{
     @iOSXCUITFindBy(id = "a")
     private MobileElement txtfieldMobileNumber;
 
+
+
     @AndroidFindBy(id = "ph.com.globe.mybusiness:id/sptxt_title")
     @iOSXCUITFindBy(id = "a")
     private MobileElement txtWelcome;
+
+    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/sptxt_error_spiel")
+    @iOSXCUITFindBy(id = "placeholder")
+    private MobileElement invalidNumberErrorSpiel;
+
+    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/img_nominate_account_help")
+    @iOSXCUITFindBy(id = "placeholder")
+    private MobileElement helpIcon;
 
     @Step("Step: Click Button Next")
     public void clickBtnNext() {
@@ -41,7 +54,11 @@ public class LoginPage extends BasePage{
     @Step("Step: Enter Prepaid Number")
     public void enterPrepaidNumber(String text) throws IOException {
         log.info("Step: Enter Prepaid Number");
-        action.sendKeys(txtfieldMobileNumber, text);
+//        action.sendKeys(txtfieldMobileNumber, text);
+        char[] keys = text.toCharArray();
+        for(char key : keys){
+            this.clickButton(key);
+        }
         action.takeSnapShot("Enter Prepaid Number");
     }
 
@@ -58,10 +75,38 @@ public class LoginPage extends BasePage{
 
     }
 
+
     @Step("Step: Verify if User is in Login Page")
     public Boolean verifyIfLoginPage(){
         return action.isDisplayed(txtWelcome);
     }
+
+    @Step("Step: Verify error spiel for invalid number")
+    public boolean verifyInvalidNumberErrorSpiel(String errorSpiel){
+        action.waitForElementToBeVisible(invalidNumberErrorSpiel);
+        return action.getText(invalidNumberErrorSpiel).equals(errorSpiel);
+    }
+
+    @Step("Step: Verify if user is at Welcome page")
+    public boolean isAt(){
+        return action.isDisplayed(txtWelcome) &&
+                action.isDisplayed(txtfieldMobileNumber) &&
+                action.isDisplayed(helpIcon) &&
+                action.isDisplayed(btn1);
+    }
+
+    @Step("Step: Delete entered number")
+    public void deleteEnteredNumber(){
+        action.clearTextField(txtfieldMobileNumber);
+    }
+
+
+    private void clickButton(char key){
+        String loc = keypadPartialExpath + key + "']";
+        action.click(action.findElementBy(loc));
+    }
+
+
 
 }
 

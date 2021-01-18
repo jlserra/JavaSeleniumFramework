@@ -9,8 +9,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ActionUtilities;
 
-import java.io.IOException;
-
 import static org.testng.Assert.assertTrue;
 
 public class GetStartedPage extends BasePage {
@@ -69,7 +67,7 @@ public class GetStartedPage extends BasePage {
         action.waitForElementToBeVisible(txtGetStartedTitle);
         assertTrue(action.getText(txtGetStartedTitle).equals("Get more data"));
         action.takeSnapShot("Get More Data");
-
     }
+
 
 }

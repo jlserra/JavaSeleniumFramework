@@ -216,4 +216,12 @@ public class ActionUtilities extends BasePage {
         RIGHT;
     }
 
+    public MobileElement findElementBy(String loc){
+        return (MobileElement) driver.findElementByXPath(loc);
+    }
+
+    public void clearTextField(MobileElement textfield){
+        textfield.clear();
+    }
+
 }

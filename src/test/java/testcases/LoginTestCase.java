@@ -4,6 +4,7 @@ import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
 import static org.testng.Assert.assertTrue;
 
 @Listeners(testcases.ListenerTestcase.class)
@@ -24,11 +25,11 @@ public class LoginTestCase extends BaseTestcase {
         getStartedPage.clickBtnGetStarted();
 
 //        Login Page
-        assertTrue(loginPage.verifyIfLoginPage());
-        loginPage.enterPrepaidNumber(mobileNumber);
-        assertTrue(loginPage.verifyIfMobileNumberIsEntered(mobileNumber));
-        assertTrue(loginPage.verifyIfBtnNextIsEnabled());
-        loginPage.clickBtnNext();
+        assertTrue(welcomePage.verifyIfLoginPage());
+        welcomePage.enterPrepaidNumber(mobileNumber);
+        assertTrue(welcomePage.verifyIfMobileNumberIsEntered(mobileNumber));
+        assertTrue(welcomePage.verifyIfBtnNextIsEnabled());
+        welcomePage.clickBtnNext();
 
 //        Secure Application Page
         assertTrue(secureAppPage.verifyIfSecurePage());
