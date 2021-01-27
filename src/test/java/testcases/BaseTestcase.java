@@ -31,7 +31,7 @@ public class BaseTestcase {
 
 //    Pages
     public BasePage basePage;
-    public LoginPage loginPage;
+    public WelcomePage welcomePage;
     public GetStartedPage getStartedPage;
     public SecureAppPage secureAppPage;
     public CustomerProfilePage customerProfilePage;
@@ -48,17 +48,13 @@ public class BaseTestcase {
 
 //        Initialize Pages
         basePage = new BasePage(driver, action, log, config);
-        loginPage = new LoginPage(driver);
+        welcomePage = new WelcomePage(driver);
         getStartedPage = new GetStartedPage(driver);
         secureAppPage = new SecureAppPage(driver);
         customerProfilePage = new CustomerProfilePage(driver);
     }
 
-    @BeforeSuite
     public void setupAppium() throws IOException {
-
-        log.startSuite();
-
         if (config.getPlatform().equalsIgnoreCase("android")) {
             initializeAndroidCapabilities();
         } else {
@@ -68,11 +64,8 @@ public class BaseTestcase {
         initializePages();
     }
 
-    @AfterSuite
     public void closeApp() {
         driver.closeApp();
-        driver.quit();
-        log.endSuite();
     }
 
     //    Android Capabilities
@@ -135,14 +128,17 @@ public class BaseTestcase {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
-    @BeforeTest
-    public void beforeTest() {
+    @BeforeMethod
+    public void beforeTest() throws IOException {
+        setupAppium();
         log.startTestCase(getClass().getName());
     }
 
-    @AfterTest
+    @AfterMethod
     public void afterTest() {
         log.endTestCase(getClass().getName());
+        closeApp();
+        action.implicitlyWait(5);
     }
 }
 
