@@ -31,7 +31,7 @@ public class BaseTestcase {
 
 //    Pages
     public BasePage basePage;
-    public LoginPage loginPage;
+    public WelcomePage welcomePage;
     public GetStartedPage getStartedPage;
     public SecureAppPage secureAppPage;
     public CustomerProfilePage customerProfilePage;
@@ -48,7 +48,7 @@ public class BaseTestcase {
 
 //        Initialize Pages
         basePage = new BasePage(driver, action, log, config);
-        loginPage = new LoginPage(driver);
+        welcomePage = new WelcomePage(driver);
         getStartedPage = new GetStartedPage(driver);
         secureAppPage = new SecureAppPage(driver);
         customerProfilePage = new CustomerProfilePage(driver);
@@ -87,7 +87,7 @@ public class BaseTestcase {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "emulator-5554");
         capabilities.setCapability("automationName", "UiAutomator2");
-        capabilities.setCapability("noReset", false);
+        capabilities.setCapability("noReset", true);
 
 //        Application Capability Configuration
 //        A.) APK Fresh Installation
@@ -121,7 +121,7 @@ public class BaseTestcase {
         capabilities.setCapability("platformVersion", "14.0");
         capabilities.setCapability("udid", udid_iphone6);
         capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
 
 //        IOS Application Configuration
         capabilities.setCapability("bundleId", "com.example.apple-samplecode.UICatalog");
