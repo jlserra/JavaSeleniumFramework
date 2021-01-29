@@ -10,7 +10,4 @@ logs
 SGBBAPPAutomation.iml
 /.idea/
 allure-report
-=======
-.gitignore
-/.idea/
 

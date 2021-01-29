@@ -48,20 +48,20 @@ public class LoginTestCase extends BaseTestcase {
         assertTrue(customerProfilePage.verifyIfBtnNextIsEnabled());
         customerProfilePage.clickBtnNext();
 
-        assertTrue(customerProfilePage.verifyIfChooseModemPage());
-        customerProfilePage.clickModem1();
+//        assertTrue(customerProfilePage.verifyIfChooseModemPage());
+//        customerProfilePage.clickModem1();
+//
+//        assertTrue(customerProfilePage.verifyIfConnectPhonetoMyBusinessPage());
+//        customerProfilePage.clickBtnImAlreadyConnected();
+//
+//        assertTrue(customerProfilePage.verifyIfNotConnectedPage());
+//        customerProfilePage.clickBtnManualVerifyAccount();
+//
+//        customerProfilePage.clickBtnSkip();
+//        customerProfilePage.clickBtnProceed();
 
-        assertTrue(customerProfilePage.verifyIfConnectPhonetoMyBusinessPage());
-        customerProfilePage.clickBtnImAlreadyConnected();
-
-        assertTrue(customerProfilePage.verifyIfNotConnectedPage());
-        customerProfilePage.clickBtnManualVerifyAccount();
-
-        customerProfilePage.clickBtnSkip();
-        customerProfilePage.clickBtnProceed();
-
-        action.implicitlyWait();
-        action.takeSnapShot("Dashboard Screen");
+//        action.implicitlyWait();
+//        action.takeSnapShot("Dashboard Screen");
 
     }
 
