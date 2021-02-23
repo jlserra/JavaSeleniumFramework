@@ -9,27 +9,6 @@ public class LoggerUtilities {
 
     static Logger log = Logger.getLogger("test");
 
-    public void startTestCase(String TestCaseName) {
-        log.info("****************************************************************************************");
-        log.info("START - " + TestCaseName + "");
-        log.info("****************************************************************************************");
-    }
-
-    public void endTestCase(String TestCaseName) {
-        log.info("****************************************************************************************");
-        log.info("END - " + TestCaseName + "");
-        log.info("****************************************************************************************");
-    }
-
-    public void startSuite() {
-        log.info("***********************             -  SUITE START -            ************************");
-    }
-
-    public void endSuite() {
-        log.info("***********************             -  SUITE END -             ***********************");
-    }
-
-
     public void info(String message) {
         log.info(message);
     }

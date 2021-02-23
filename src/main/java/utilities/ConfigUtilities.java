@@ -1,41 +1,34 @@
 package utilities;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import pageobjects.BasePage;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
-
-public class ConfigUtilities {
+public class ConfigUtilities extends BasePage {
 
     public String platform;
+    public String testcase;
 
     public ConfigUtilities() {
 
         try {
-            File inputFile = new File("pom.xml");
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(inputFile);
-            doc.getDocumentElement().normalize();
-            NodeList nList = doc.getElementsByTagName("properties");
-            Node nNode = nList.item(0);
-            Element eElement = (Element) nNode;
-
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                setPlatform(eElement
-                        .getElementsByTagName("platform")
-                        .item(0)
-                        .getTextContent());
+            if (System.getProperty("platform") != null) {
+                setPlatform(System.getProperty("platform"));
+            } else {
+                //set android as default
+                setPlatform("android");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public String getTestcase() {
+        return testcase;
+    }
+
+    public void setTestcase(String testcase) {
+        this.testcase = testcase;
     }
 
     public String getPlatform() {
@@ -45,4 +38,27 @@ public class ConfigUtilities {
     public void setPlatform(String platform) {
         this.platform = platform;
     }
+
+    public enum Timers {
+        superFast(500),
+        fast(1000),
+        realQuick(2000),
+        quick(4000),
+        normal(6000),
+        appStandard(12000),
+        slow(24000),
+        verySlow(48000);
+
+        public int getValue() {
+            return value;
+        }
+        private int value;
+
+        Timers(int value) {
+            this.value = value;
+        }
+    }
+
+
+
 }

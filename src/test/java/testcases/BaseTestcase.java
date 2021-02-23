@@ -1,7 +1,6 @@
 package testcases;
 
 import java.io.*;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -20,6 +19,7 @@ import pageobjects.*;
 
 import utilities.ActionUtilities;
 import utilities.ConfigUtilities;
+import utilities.ExcelUtilities;
 import utilities.LoggerUtilities;
 
 public class BaseTestcase {
@@ -40,18 +40,19 @@ public class BaseTestcase {
     ActionUtilities action;
     ConfigUtilities config = new ConfigUtilities();
     LoggerUtilities log = new LoggerUtilities();
+    ExcelUtilities excel = new ExcelUtilities(config, log);
 
 //    Pages Initialization
-    public void initializePages() {
+    public void initializePages() throws IOException {
 //    Initialize Utilities
         action = new ActionUtilities(driver);
 
 //        Initialize Pages
-        basePage = new BasePage(driver, action, log, config);
-        welcomePage = new WelcomePage(driver);
+        basePage = new BasePage(driver, action, log, config, excel);
+//        welcomePage = new WelcomePage(driver);
         getStartedPage = new GetStartedPage(driver);
-        secureAppPage = new SecureAppPage(driver);
-        customerProfilePage = new CustomerProfilePage(driver);
+//        secureAppPage = new SecureAppPage(driver);
+//        customerProfilePage = new CustomerProfilePage(driver);
     }
 
     public void setupAppium() throws IOException {
@@ -62,10 +63,6 @@ public class BaseTestcase {
         }
 
         initializePages();
-    }
-
-    public void closeApp() {
-        driver.closeApp();
     }
 
     //    Android Capabilities
@@ -131,14 +128,18 @@ public class BaseTestcase {
     @BeforeMethod
     public void beforeTest() throws IOException {
         setupAppium();
-        log.startTestCase(getClass().getName());
     }
 
     @AfterMethod
     public void afterTest() {
-        log.endTestCase(getClass().getName());
-        closeApp();
-        action.implicitlyWait(5);
+        driver.closeApp();
+        action.implicitlyWait(ConfigUtilities.Timers.fast);
+    }
+
+    @BeforeSuite
+    public void beforeSuite() throws IOException {
+        excel.readTestdata();
+        excel.readLocators();
     }
 }
 
