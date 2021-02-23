@@ -27,6 +27,14 @@ public class SecureAppPage extends BasePage {
     @iOSXCUITFindBy( id = "a" )
     private MobileElement txtSecureApp;
 
+    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/pet_pin")
+    @iOSXCUITFindBy(id = "placeholder")
+    public MobileElement txtSecurePin;
+
+    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/sptxt_pin_error_spiel")
+    @iOSXCUITFindBy(id = "placeholder")
+    private MobileElement unmatchedSecurePin;
+
     @AndroidFindBy(id = "ph.com.globe.mybusiness:id/pbtn_pin_submit")
     @iOSXCUITFindBy(id= "a")
     private MobileElement btnNext;
@@ -47,6 +55,10 @@ public class SecureAppPage extends BasePage {
     @iOSXCUITFindBy(id= "a")
     private MobileElement btn4;
 
+    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/spbtn_pin_key_clear")
+    @iOSXCUITFindBy(id= "a")
+    private MobileElement btnDelete;
+
     @Step("Step: Verify if User is in Secure Application Page")
     public Boolean verifyIfSecurePage(){
         log.info("Step: Verify if User is in Secure Application Page");
@@ -64,6 +76,12 @@ public class SecureAppPage extends BasePage {
         return action.isDisplayed(txtSecureApp);
     }
 
+    @Step("Step: Verify error spiel for invalid number")
+    public boolean verifyUnmatchedSecurePinErrorSpiel(String errorSpiel){
+        action.waitForElementToBeVisible(unmatchedSecurePin);
+        return action.getText(unmatchedSecurePin).equals(errorSpiel);
+    }
+
     @Step("Step: Click Button Next")
     public void clickBtnNext(){
         log.info("Step: Click Button Next");
@@ -74,6 +92,12 @@ public class SecureAppPage extends BasePage {
     public void verifyIfBtnNextIsEnabled(){
         log.info("Step: Verify if Button next is enabled");
         action.waitForElementToBeClickable(btnNext);
+    }
+
+    @Step("Step: Delete Secure Pin")
+    public void clickBtnDelete(){
+        log.info("Step: Step: Delete Secure Pin");
+            action.click(btnDelete);
     }
 
     @Step("Step: Enter Pin")

@@ -77,7 +77,7 @@ public class BaseTestcase {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "emulator-5554");
         capabilities.setCapability("automationName", "UiAutomator2");
-        capabilities.setCapability("noReset", false);
+        capabilities.setCapability("noReset", true);
 
 //        Application Capability Configuration
 //        A.) APK Fresh Installation
@@ -111,7 +111,7 @@ public class BaseTestcase {
         capabilities.setCapability("platformVersion", "14.0");
         capabilities.setCapability("udid", udid_iphone6);
         capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
 
 //        IOS Application Configuration
         capabilities.setCapability("bundleId", "com.example.apple-samplecode.UICatalog");

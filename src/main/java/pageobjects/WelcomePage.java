@@ -72,9 +72,7 @@ public class WelcomePage extends BasePage{
     public Boolean verifyIfBtnNextIsEnabled(){
         log.info("Step: Verify if Button Next is Enabled");
         return action.isEnabled(btnNext);
-
     }
-
 
     @Step("Step: Verify if User is in Login Page")
     public Boolean verifyIfLoginPage(){
