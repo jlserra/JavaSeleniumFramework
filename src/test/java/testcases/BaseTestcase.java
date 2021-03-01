@@ -77,7 +77,7 @@ public class BaseTestcase {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "emulator-5554");
         capabilities.setCapability("automationName", "UiAutomator2");
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
 
 //        Application Capability Configuration
 //        A.) APK Fresh Installation
