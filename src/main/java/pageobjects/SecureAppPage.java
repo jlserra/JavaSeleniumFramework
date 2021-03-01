@@ -12,6 +12,7 @@ import org.aspectj.apache.bcel.classfile.ConstantString;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigUtilities;
 
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
@@ -118,7 +119,7 @@ public class SecureAppPage extends BasePage {
                     action.click(btn4);
                     break;
             }
-            action.implicitlyWait(1);
+            action.implicitlyWait(ConfigUtilities.Timers.fast);
         }
     }
 
