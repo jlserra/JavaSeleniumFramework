@@ -15,14 +15,14 @@ import java.util.Iterator;
 
 public class ExcelUtilities {
 
-    public JSONObject testData = new JSONObject();
-    public JSONObject locators = new JSONObject();
+    public static JSONObject testData = new JSONObject();
+    public static JSONObject locators = new JSONObject();
     public static ConfigUtilities config;
     public static LoggerUtilities log;
 
     public ExcelUtilities(ConfigUtilities config, LoggerUtilities log){
-        ExcelUtilities.config = config;
-        ExcelUtilities.log = log;
+        this.config = config;
+        this.log = log;
     }
 
     public static String getCellValue(Cell cell) {
@@ -86,8 +86,6 @@ public class ExcelUtilities {
             }
             testData.put(testcasename, tempJson);
         }
-
-        System.out.println(testData.toString());
 
     }
 
@@ -156,8 +154,6 @@ public class ExcelUtilities {
             }
             locators.put(locatorname, tempJson);
         }
-
-        System.out.println(locators.toString());
 
     }
 

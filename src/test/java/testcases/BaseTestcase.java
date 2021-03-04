@@ -45,7 +45,7 @@ public class BaseTestcase {
 //    Pages Initialization
     public void initializePages() {
 //    Initialize Utilities
-        action = new ActionUtilities(driver);
+        action = new ActionUtilities(driver, log, config, excel);
 
 //        Initialize Pages
         basePage = new BasePage(driver, action, log, config, excel);
@@ -148,7 +148,6 @@ public class BaseTestcase {
     public void beforeSuite() throws IOException {
         excel.readTestdata();
         excel.readLocators();
-
     }
 }
 

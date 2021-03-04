@@ -63,12 +63,12 @@ public class LoginTestCase extends BaseTestcase {
 
     }
 
-    @Test(testName = "loginUser")
+    @Test(testName = "loginUser1")
     @Severity(SeverityLevel.NORMAL)
     @Description("Test Description: User will be logged in to the system")
     @Story("Story: Login")
     public void loginUser1() throws Exception {
-        getStartedPage.verifyGetStartedPages();
+        getStartedPage.clickBtnGetStarted();
     }
 
 }

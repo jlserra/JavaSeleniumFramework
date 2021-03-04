@@ -5,28 +5,20 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import pageobjects.BasePage;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class ConfigUtilities extends BasePage {
 
     File filePath = new File(System.getProperty("user.dir"));
     public File resourceDirectory = new File(filePath, "src/main/resources");
-    public String platform;
-    public String testcase;
-    public JSONObject capabilities;
+    private static String platform;
+    private static String testcase;
+    public static JSONObject capabilities;
 
     public ConfigUtilities() {
 
         try {
-            if (System.getProperty("platform") != null) {
-                setPlatform(System.getProperty("platform"));
-            } else {
-                //set android as default
-                setPlatform("android");
-            }
-
+            getProperty();
             getCapabilities();
 
         } catch (Exception e) {
@@ -35,11 +27,18 @@ public class ConfigUtilities extends BasePage {
 
     }
 
+    public void getProperty(){
+        if (System.getProperty("platform") != null) {
+            setPlatform(System.getProperty("platform"));
+        } else {
+            //set android as default
+            setPlatform("android");
+        }
+    }
+
     public void getCapabilities() throws IOException, ParseException {
 
-        File filePath = new File(System.getProperty("user.dir"));
-        File fileDir = new File(filePath, "src/main/resources");
-        File path = new File(fileDir, "capabilities.json");
+        File path = new File(resourceDirectory, "capabilities.json");
 
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader(path.getAbsolutePath());

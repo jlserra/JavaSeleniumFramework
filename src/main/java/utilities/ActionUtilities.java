@@ -11,19 +11,24 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobjects.BasePage;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class ActionUtilities extends BasePage {
+public class ActionUtilities {
 
     static final int explicitWaitDefault = 10;
     MobileDriver driver;
+    ConfigUtilities config;
+    LoggerUtilities log;
+    ExcelUtilities excel;
 
-    public ActionUtilities(MobileDriver driver) {
+    public ActionUtilities(MobileDriver driver,LoggerUtilities log, ConfigUtilities config, ExcelUtilities excel ) {
         this.driver = driver;
+        this.log = log;
+        this.config = config;
+        this.excel = excel;
     }
 
     @Attachment(value = "{0}", type = "text/plain")
@@ -260,7 +265,7 @@ public class ActionUtilities extends BasePage {
 
     public void takeSnapShot(String description) throws IOException {
 
-        String testname = config.testcase;
+        String testname = config.getTestcase();
 
         // Convert web driver object to TakeScreenshot
         TakesScreenshot scrShot = ((TakesScreenshot) driver);

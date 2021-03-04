@@ -36,14 +36,14 @@ public class ListenerTestcase extends BaseTestcase implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
         log.info("****************************************************************************************");
-        log.info("***********************  SUITE START - " + context.getAllTestMethods()[0].getInstance().getClass() + "");
+        log.info("***********************  SUITE START - " + context.getName() + "");
         log.info("****************************************************************************************");
     }
 
     @Override
     public void onFinish(ITestContext context) {
         log.info("****************************************************************************************");
-        log.info("***********************  SUITE END - " + context.getAllTestMethods()[0].getInstance().getClass() + "");
+        log.info("***********************  SUITE END - " + context.getName() + "");
         log.info("****************************************************************************************");
     }
 }
