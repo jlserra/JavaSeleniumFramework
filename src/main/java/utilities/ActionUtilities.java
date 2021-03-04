@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ActionUtilities extends BasePage {
 
-    static int explicitWaitDefault = 10;
+    static final int explicitWaitDefault = 10;
     MobileDriver driver;
 
     public ActionUtilities(MobileDriver driver) {

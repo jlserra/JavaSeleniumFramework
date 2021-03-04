@@ -4,9 +4,6 @@ import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertNotEquals;
-import static org.testng.Assert.assertTrue;
-
 @Listeners(testcases.ListenerTestcase.class)
 public class LoginTestCase extends BaseTestcase {
 

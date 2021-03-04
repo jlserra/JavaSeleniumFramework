@@ -8,9 +8,6 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
-import org.aspectj.apache.bcel.classfile.ConstantString;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ConfigUtilities;
 

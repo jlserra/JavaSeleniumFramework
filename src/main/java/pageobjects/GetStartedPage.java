@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import utilities.ActionUtilities;
 import utilities.ConfigUtilities;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class GetStartedPage extends BasePage {
@@ -35,28 +36,28 @@ public class GetStartedPage extends BasePage {
 
         log.info("Step: Verify Get Started Pages");
         action.waitForElementToBeVisible("txtGetStartedTitle", ConfigUtilities.Timers.appStandard);
-        assertTrue(action.getText("txtGetStartedTitle").equals(excel.getTestdata("text1")));
+        assertEquals(excel.getTestdata("text1"), action.getText("txtGetStartedTitle"));
         action.takeSnapShot(excel.getTestdata("text1"));
         action.swipe(ActionUtilities.Direction.LEFT);
         new GetStartedPage(driver);
         Thread.sleep(2000);
 
         action.waitForElementToBeVisible("txtGetStartedTitle", ConfigUtilities.Timers.appStandard);
-        assertTrue(action.getText("txtGetStartedTitle").equals(excel.getTestdata("text2")));
+        assertEquals(excel.getTestdata("text2"), action.getText("txtGetStartedTitle"));
         action.takeSnapShot(excel.getTestdata("text2"));
         action.swipe(ActionUtilities.Direction.LEFT);
         new GetStartedPage(driver);
         Thread.sleep(2000);
 
         action.waitForElementToBeVisible("txtGetStartedTitle", ConfigUtilities.Timers.appStandard);
-        assertTrue(action.getText("txtGetStartedTitle").equals(excel.getTestdata("text3")));
+        assertEquals(excel.getTestdata("text3"), action.getText("txtGetStartedTitle"));
         action.takeSnapShot(excel.getTestdata("text3"));
         action.swipe(ActionUtilities.Direction.LEFT);
         new GetStartedPage(driver);
         Thread.sleep(2000);
 
         action.waitForElementToBeVisible("txtGetStartedTitle", ConfigUtilities.Timers.appStandard);
-        assertTrue(action.getText("txtGetStartedTitle").equals(excel.getTestdata("text4")));
+        assertEquals(excel.getTestdata("text4"), action.getText("txtGetStartedTitle"));
         action.takeSnapShot(excel.getTestdata("text4"));
     }
 

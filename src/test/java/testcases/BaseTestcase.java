@@ -43,7 +43,7 @@ public class BaseTestcase {
     ExcelUtilities excel = new ExcelUtilities(config, log);
 
 //    Pages Initialization
-    public void initializePages() throws IOException {
+    public void initializePages() {
 //    Initialize Utilities
         action = new ActionUtilities(driver);
 
@@ -61,8 +61,6 @@ public class BaseTestcase {
         } else {
             initializeIOSCapabilities();
         }
-
-        initializePages();
     }
 
     //    Android Capabilities
@@ -81,14 +79,23 @@ public class BaseTestcase {
 
 //        Application Capability Configuration
 //        A.) APK Fresh Installation
-        File filePath = new File(System.getProperty("user.dir"));
-        File appDir = new File(filePath, "src/main/resources");
-        File app = new File(appDir, "release.apk");
+        File app = new File(config.resourceDirectory, "release.apk");
         capabilities.setCapability("app", app.getAbsolutePath());
 
 //        B.) APK Pre-Installed
 //        capabilities.setCapability("appPackage", "ph.com.globe.mybusiness");
 //        capabilities.setCapability("appActivity", "ph.com.globe.mybusiness.SplashScreenActivity");
+
+//        Get capabilities from JSON
+//        for(Object key : config.capabilities.keySet()) {
+//            Object value = config.capabilities.get(key);
+//            if(key.equals("app")){
+//                File app = new File(config.resourceDirectory, (String) value);
+//                capabilities.setCapability((String) key, app.getAbsolutePath());
+//            } else{
+//                capabilities.setCapability((String) key, value);
+//            }
+//        }
 
 //        Send desired capabilities to appium
         driver = new AndroidDriver<MobileElement>(url, capabilities);
@@ -128,6 +135,7 @@ public class BaseTestcase {
     @BeforeMethod
     public void beforeTest() throws IOException {
         setupAppium();
+        initializePages();
     }
 
     @AfterMethod
@@ -140,6 +148,7 @@ public class BaseTestcase {
     public void beforeSuite() throws IOException {
         excel.readTestdata();
         excel.readLocators();
+
     }
 }
 

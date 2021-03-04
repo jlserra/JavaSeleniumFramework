@@ -21,8 +21,8 @@ public class ExcelUtilities {
     public static LoggerUtilities log;
 
     public ExcelUtilities(ConfigUtilities config, LoggerUtilities log){
-        this.config = config;
-        this.log = log;
+        ExcelUtilities.config = config;
+        ExcelUtilities.log = log;
     }
 
     public static String getCellValue(Cell cell) {
@@ -52,19 +52,15 @@ public class ExcelUtilities {
 
     public void readTestdata() throws IOException {
 
-        File filePath = new File(System.getProperty("user.dir"));
-        File fileDir = new File(filePath, "src/main/resources");
-        File path = new File(fileDir, "Testdata.xlsx");
+        File path = new File(config.resourceDirectory, "Testdata.xlsx");
         FileInputStream inputStream = new FileInputStream(path.getAbsolutePath());
 
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 
         XSSFSheet sheet = workbook.getSheet("Testdata");
 
-        Iterator<Row> rowIterator = sheet.iterator();
-
-        while (rowIterator.hasNext()) {
-            XSSFRow row = (XSSFRow) rowIterator.next();
+        for (Row cells : sheet) {
+            XSSFRow row = (XSSFRow) cells;
 
             Iterator<Cell> cellIterator = row.cellIterator();
 
@@ -100,7 +96,7 @@ public class ExcelUtilities {
         try {
             JSONObject json = (JSONObject) testData.get(config.getTestcase().toLowerCase());
             log.info("Able to get testdata "+ json.get(testdata.toLowerCase()));
-            value = json.get(testdata.toLowerCase()).toString().replaceAll("[\n\r]", "");;
+            value = json.get(testdata.toLowerCase()).toString().replaceAll("[\n\r]", "");
         } catch (Exception e) {
             System.out.println("Testcase or testdata not found with parameter : " + testdata);
         }
@@ -118,10 +114,8 @@ public class ExcelUtilities {
 
         XSSFSheet sheet = workbook.getSheet("Locators");
 
-        Iterator<Row> rowIterator = sheet.iterator();
-
-        while (rowIterator.hasNext()) {
-            XSSFRow row = (XSSFRow) rowIterator.next();
+        for (Row cells : sheet) {
+            XSSFRow row = (XSSFRow) cells;
 
             Iterator<Cell> cellIterator = row.cellIterator();
 

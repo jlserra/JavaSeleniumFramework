@@ -1,14 +1,11 @@
 package testcases;
 
 
-import com.sun.istack.internal.localization.NullLocalizable;
 import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pageobjects.SecureAppPage;
 
 import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
 
 @Listeners(testcases.ListenerTestcase.class)
 public class VerifySecurePageAppPageTestCase extends BaseTestcase {

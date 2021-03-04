@@ -11,4 +11,15 @@
             </class>
         </classes>
     </test>
+    <test verbose="2" preserve-order="true"
+          name="/Users/jeanlexterserra/IdeaProjects/SGBBAPPAutomation/src/test/java/testcases/VerifyGetStartedTestcase.java">
+        <classes>
+            <class name="testcases.VerifyGetStartedTestcase">
+                <methods>
+                    <include name="verifyGetStartedPages"/>
+                    <include name="clickButtonGetStarted"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
