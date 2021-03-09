@@ -1,5 +1,6 @@
 package utilities;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -13,6 +14,8 @@ public class ConfigUtilities extends BasePage {
     public File resourceDirectory = new File(filePath, "src/main/resources");
     private static String platform;
     private static String testcase;
+    private static String suitename;
+
     public static JSONObject capabilities;
 
     public ConfigUtilities() {
@@ -55,7 +58,15 @@ public class ConfigUtilities extends BasePage {
     }
 
     public void setTestcase(String testcase) {
-        this.testcase = testcase;
+        ConfigUtilities.testcase = testcase;
+    }
+
+    public String getSuitename() {
+        return suitename;
+    }
+
+    public void setSuitename(String suitename) {
+        ConfigUtilities.suitename = suitename;
     }
 
     public String getPlatform() {
@@ -63,7 +74,7 @@ public class ConfigUtilities extends BasePage {
     }
 
     public void setPlatform(String platform) {
-        this.platform = platform;
+        ConfigUtilities.platform = platform;
     }
 
     public enum Timers {
@@ -86,6 +97,18 @@ public class ConfigUtilities extends BasePage {
         }
     }
 
+    public void setTestConfiguration(String suitename, String testcase){
+
+        setSuitename(suitename);
+        setTestcase(testcase);
+        clearLog();
+
+        System.setProperty("suite", suitename);
+        System.setProperty("filename", testcase);
+        File path = new File(config.resourceDirectory, "log4j.properties");
+        PropertyConfigurator.configure(path.getAbsolutePath());
+
+    }
 
 
 }

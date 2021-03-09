@@ -1,70 +1,52 @@
 package pageobjects;
 
 import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import io.qameta.allure.Step;
 
-import org.openqa.selenium.support.PageFactory;
+import io.qameta.allure.Step;
+import utilities.ConfigUtilities;
 
 import java.io.IOException;
 
+import static org.testng.Assert.assertTrue;
 
 public class CustomerProfilePage extends BasePage {
 
+    MobileDriver driver;
+
     public CustomerProfilePage(MobileDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        this.driver = driver;
     }
-
-    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/spet_customize_profile_nickname")
-    @iOSXCUITFindBy(id = "a")
-    private MobileElement txtfieldNickname;
-
-    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/pbtn_customize_profile_submit")
-    @iOSXCUITFindBy(id = "a")
-    private MobileElement btnNext;
-
-    @AndroidFindBy(xpath = "//*[@text='Customize your profile']")
-    @iOSXCUITFindBy(xpath = "a")
-    private MobileElement txtCustomerProfile;
-
-    @AndroidFindBy(id = "ph.com.globe.mybusiness:id/skip")
-    @iOSXCUITFindBy(xpath = "a")
-    private MobileElement btnSkip;
-
-
 
     @Step("Step: Click Button Next")
     public void clickBtnNext(){
         log.info("Step: Click Button Next");
-        action.click(btnNext);
+        action.click("btnNext");
     }
 
     @Step("Step: Click Button Skip")
     public void clickBtnSkip() {
         log.info("Step: Click Button Skip");
-        action.click(btnSkip);
+        action.click("btnSkip");
     }
 
     @Step("Step: Click Button Skip")
     public Boolean verifyIfBtnNextIsEnabled(){
         log.info("Step: Verify if Button Next is Enabled");
-        return action.isEnabled(btnNext);
+        return action.isEnabled("btnNext");
     }
 
     @Step("Step: Enter Nickname")
     public void enterNickname(String text) throws IOException {
         log.info("Step: Enter Prepaid Number");
-        action.sendKeys(txtfieldNickname, text);
+        action.sendKeys("txtfieldNickname", text);
         action.takeSnapShot("Enter nickname");
     }
 
-    @Step("Step: Enter Nickname")
+    @Step("Step: Verify if user is in Customer Profile Page")
     public Boolean verifyIfCustomerProfilePage(){
         log.info("Step: Verify if user is in Customer Profile Page");
-        return action.isDisplayed(txtCustomerProfile);
+        assertTrue(action.waitForElementToBeVisible("txtCustomerProfile", ConfigUtilities.Timers.slow));
+        return action.isDisplayed("txtCustomerProfile");
     }
 
 

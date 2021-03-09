@@ -2,22 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
-          name="/Users/jeanlexterserra/IdeaProjects/SGBBAPPAutomation/src/test/java/testcases/LoginTestCase.java">
+          name="CustomerProfileTestcase.java">
         <classes>
-            <class name="testcases.LoginTestCase">
+            <class name="testcases.CustomerProfileTestcase">
                 <methods>
-                    <include name="loginUser1"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test verbose="2" preserve-order="true"
-          name="/Users/jeanlexterserra/IdeaProjects/SGBBAPPAutomation/src/test/java/testcases/VerifyGetStartedTestcase.java">
-        <classes>
-            <class name="testcases.VerifyGetStartedTestcase">
-                <methods>
-                    <include name="verifyGetStartedPages"/>
-                    <include name="clickButtonGetStarted"/>
+<!--                    <include name="customerProfileEnterNickname"/>-->
+                    <include name="customerProfileSkipEnterNickname"/>
                 </methods>
             </class>
         </classes>

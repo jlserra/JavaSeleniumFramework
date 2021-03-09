@@ -12,16 +12,11 @@ import static org.testng.Assert.assertTrue;
 @Listeners(testcases.ListenerTestcase.class)
 public class CustomerProfileTestcase extends BaseTestcase {
 
-
-    @Test(testName = "customerProfileEnterNickname", priority = 0)
+    @Test(testName = "customerProfileEnterNickname")
     @Severity(SeverityLevel.NORMAL)
     @Description("Test Description: User will enter nickname in customer profile page")
     @Story("Story: Customer Profile")
     public void customerProfileEnterNickname() throws Exception {
-
-        String mobileNumber = "09271080510";
-        String pin = "1111";
-        String nickname = "test nickname";
 
 //        Get Started Page
         assertTrue(getStartedPage.verifyIfGetStartedPage());
@@ -29,25 +24,25 @@ public class CustomerProfileTestcase extends BaseTestcase {
 
 //        Login Page
         assertTrue(welcomePage.verifyIfLoginPage());
-        welcomePage.enterPrepaidNumber(mobileNumber);
-        assertTrue(welcomePage.verifyIfMobileNumberIsEntered(mobileNumber));
+        welcomePage.enterPrepaidNumber(excel.getTestdata("mobileNumber"));
+        assertTrue(welcomePage.verifyIfMobileNumberIsEntered(excel.getTestdata("mobileNumber")));
         assertTrue(welcomePage.verifyIfBtnNextIsEnabled());
         welcomePage.clickBtnNext();
 
 //        Secure Application Page
         assertTrue(secureAppPage.verifyIfSecurePage());
-        secureAppPage.enterPin(pin);
+        secureAppPage.enterPin(excel.getTestdata("pin"));
         secureAppPage.verifyIfBtnNextIsEnabled();
         secureAppPage.clickBtnNext();
 
         assertTrue(secureAppPage.verifyIfSecurePageConfirmation());
-        secureAppPage.enterPin(pin);
+        secureAppPage.enterPin(excel.getTestdata("pin"));
         secureAppPage.verifyIfBtnNextIsEnabled();
         secureAppPage.clickBtnNext();
 
 //        Customer Profile
         assertTrue(customerProfilePage.verifyIfCustomerProfilePage());
-        customerProfilePage.enterNickname(nickname);
+        customerProfilePage.enterNickname(excel.getTestdata("nickname"));
         assertTrue(customerProfilePage.verifyIfBtnNextIsEnabled());
         customerProfilePage.clickBtnNext();
 
@@ -59,29 +54,25 @@ public class CustomerProfileTestcase extends BaseTestcase {
     @Story("Story: Customer Profile")
     public void customerProfileSkipEnterNickname() throws Exception {
 
-        String mobileNumber = "09271080510";
-        String pin = "1111";
-        String nickname = "test nickname";
-
 //        Get Started Page
         assertTrue(getStartedPage.verifyIfGetStartedPage());
         getStartedPage.clickBtnGetStarted();
 
 //        Login Page
         assertTrue(welcomePage.verifyIfLoginPage());
-        welcomePage.enterPrepaidNumber(mobileNumber);
-        assertTrue(welcomePage.verifyIfMobileNumberIsEntered(mobileNumber));
+        welcomePage.enterPrepaidNumber(excel.getTestdata("mobileNumber"));
+        assertTrue(welcomePage.verifyIfMobileNumberIsEntered(excel.getTestdata("mobileNumber")));
         assertTrue(welcomePage.verifyIfBtnNextIsEnabled());
         welcomePage.clickBtnNext();
 
 //        Secure Application Page
         assertTrue(secureAppPage.verifyIfSecurePage());
-        secureAppPage.enterPin(pin);
+        secureAppPage.enterPin(excel.getTestdata("pin"));
         secureAppPage.verifyIfBtnNextIsEnabled();
         secureAppPage.clickBtnNext();
 
         assertTrue(secureAppPage.verifyIfSecurePageConfirmation());
-        secureAppPage.enterPin(pin);
+        secureAppPage.enterPin(excel.getTestdata("pin"));
         secureAppPage.verifyIfBtnNextIsEnabled();
         secureAppPage.clickBtnNext();
 

@@ -21,20 +21,16 @@ public class ActionUtilities {
     static final int explicitWaitDefault = 10;
     MobileDriver driver;
     ConfigUtilities config;
-    LoggerUtilities log;
     ExcelUtilities excel;
+    LoggerUtilities log;
 
-    public ActionUtilities(MobileDriver driver,LoggerUtilities log, ConfigUtilities config, ExcelUtilities excel ) {
+    public ActionUtilities(MobileDriver driver, LoggerUtilities log, ConfigUtilities config, ExcelUtilities excel ) {
         this.driver = driver;
-        this.log = log;
         this.config = config;
         this.excel = excel;
+        this.log = log;
     }
 
-    @Attachment(value = "{0}", type = "text/plain")
-    public static String saveTextLog(String name) {
-        return name;
-    }
 
     public MobileElement getElement(String key) {
         MobileElement element = null;
@@ -155,7 +151,7 @@ public class ActionUtilities {
     public Boolean isDisplayed(String locator) {
         boolean isDisplayed = false;
         try {
-            isDisplayed = new WebDriverWait(driver, ConfigUtilities.Timers.appStandard.getValue())
+            isDisplayed = new WebDriverWait(driver, ConfigUtilities.Timers.slow.getValue())
                     .until(ExpectedConditions.visibilityOf(getElement(locator))).isDisplayed();
             log.info("Element displayed with locator " + locator);
         } catch (Exception e) {
@@ -266,23 +262,28 @@ public class ActionUtilities {
     public void takeSnapShot(String description) throws IOException {
 
         String testname = config.getTestcase();
+        String suitename = config.getSuitename();
 
         // Convert web driver object to TakeScreenshot
         TakesScreenshot scrShot = ((TakesScreenshot) driver);
         // Call getScreenshotAs method to create image file
         File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
         // Move image file to new destination
-        File DestFile = new File("./screenshots/" + testname + "/" + testname + " - " + description + ".png");
+        File DestFile = new File("./screenshots/" + suitename + "/" + testname + "/" + testname + " - " + description + ".png");
         // Copy file at destination
         FileUtils.copyFile(SrcFile, DestFile);
 
         saveScreenshotPNG();
-        saveTextLog(testname + "-" + description);
     }
 
     @Attachment(value = "Screenshot", type = "image/png")
     public byte[] saveScreenshotPNG() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+    @Attachment(value = "Logs", type = "text/plain")
+    public String saveTextLog(String message) {
+        return message;
     }
 
     public void swipe(Direction dir) {

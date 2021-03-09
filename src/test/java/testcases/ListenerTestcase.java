@@ -4,11 +4,13 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.util.Arrays;
+
 public class ListenerTestcase extends BaseTestcase implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        config.setTestcase(result.getName());
+        config.setTestConfiguration(result.getTestClass().getName(),result.getName());
         log.info("***********************  START Testcase: " + result.getName());
     }
 
@@ -21,6 +23,7 @@ public class ListenerTestcase extends BaseTestcase implements ITestListener {
     public void onTestFailure(ITestResult result) {
         log.error("***********************  FAILED Testcase: " + result.getName());
         log.error("ERROR : " + result.getThrowable().getMessage());
+        log.error("ERROR : " + Arrays.toString(result.getThrowable().getStackTrace()));
     }
 
     @Override
@@ -30,20 +33,16 @@ public class ListenerTestcase extends BaseTestcase implements ITestListener {
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-
+        log.warn("***********************  FAILED Testcase: " + result.getName());
     }
 
     @Override
     public void onStart(ITestContext context) {
-        log.info("****************************************************************************************");
-        log.info("***********************  SUITE START - " + context.getName() + "");
-        log.info("****************************************************************************************");
+
     }
 
     @Override
     public void onFinish(ITestContext context) {
-        log.info("****************************************************************************************");
-        log.info("***********************  SUITE END - " + context.getName() + "");
-        log.info("****************************************************************************************");
+
     }
 }
