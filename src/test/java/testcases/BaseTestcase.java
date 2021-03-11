@@ -35,6 +35,7 @@ public class BaseTestcase {
     public GetStartedPage getStartedPage;
     public SecureAppPage secureAppPage;
     public CustomerProfilePage customerProfilePage;
+    public ChooseModemPage chooseModemPage;
 
 //    Utilities
     ActionUtilities action;
@@ -49,10 +50,11 @@ public class BaseTestcase {
 
 //        Initialize Pages
         basePage = new BasePage(driver, action, log, config, excel);
-//        welcomePage = new WelcomePage(driver);
+        welcomePage = new WelcomePage(driver);
         getStartedPage = new GetStartedPage(driver);
-//        secureAppPage = new SecureAppPage(driver);
-//        customerProfilePage = new CustomerProfilePage(driver);
+        secureAppPage = new SecureAppPage(driver);
+        customerProfilePage = new CustomerProfilePage(driver);
+        chooseModemPage = new ChooseModemPage(driver);
     }
 
     public void setupAppium() throws IOException {
