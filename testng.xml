@@ -2,11 +2,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
+<<<<<<< HEAD
           name="/Users/abrahamora/Desktop/SGBBAPP/SGBBAPPAutomation/src/test/java/testcases/VerifyChooseModem.java">
         <classes>
             <class name="testcases.VerifyChooseModem">
                 <methods>
                     <include name="verifyChooseModem"/>
+=======
+          name="CustomerProfileTestcase.java">
+        <classes>
+            <class name="testcases.CustomerProfileTestcase">
+                <methods>
+<!--                    <include name="customerProfileEnterNickname"/>-->
+                    <include name="customerProfileSkipEnterNickname"/>
+>>>>>>> 5139a0984442483e599d457cd9b06df8fc8f3910
                 </methods>
             </class>
         </classes>

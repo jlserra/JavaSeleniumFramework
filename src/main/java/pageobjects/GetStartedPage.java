@@ -26,7 +26,7 @@ public class GetStartedPage extends BasePage {
     @Step("Step: Verify if user is in Get Started Page")
     public boolean verifyIfGetStartedPage() throws Exception {
         log.info("Step: Verify if user is in Get Started Page");
-        assertTrue(action.waitForElementToBeVisible("btnGetStarted", ConfigUtilities.Timers.appStandard));
+        assertTrue(action.waitForElementToBeVisible("btnGetStarted", ConfigUtilities.Timers.slow));
         action.takeSnapShot("User is in Get Started Page");
         return action.isDisplayed("btnGetStarted");
     }
@@ -35,7 +35,7 @@ public class GetStartedPage extends BasePage {
     public void verifyGetStartedPages() throws Exception {
 
         log.info("Step: Verify Get Started Pages");
-        action.waitForElementToBeVisible("txtGetStartedTitle", ConfigUtilities.Timers.appStandard);
+        verifyIfGetStartedPage();
         assertEquals(excel.getTestdata("text1"), action.getText("txtGetStartedTitle"));
         action.takeSnapShot(excel.getTestdata("text1"));
         action.swipe(ActionUtilities.Direction.LEFT);

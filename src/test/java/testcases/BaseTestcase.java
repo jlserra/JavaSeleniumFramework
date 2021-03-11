@@ -41,11 +41,13 @@ public class BaseTestcase {
     ActionUtilities action;
     ConfigUtilities config = new ConfigUtilities();
     LoggerUtilities log = new LoggerUtilities();
-    ExcelUtilities excel = new ExcelUtilities(config, log);
+    ExcelUtilities excel = new ExcelUtilities(log, config);
 
 //    Pages Initialization
     public void initializePages() {
 //    Initialize Utilities
+        log = new LoggerUtilities();
+        excel = new ExcelUtilities(log, config);
         action = new ActionUtilities(driver, log, config, excel);
 
 //        Initialize Pages
@@ -54,7 +56,10 @@ public class BaseTestcase {
         getStartedPage = new GetStartedPage(driver);
         secureAppPage = new SecureAppPage(driver);
         customerProfilePage = new CustomerProfilePage(driver);
+<<<<<<< HEAD
         chooseModemPage = new ChooseModemPage(driver);
+=======
+>>>>>>> 5139a0984442483e599d457cd9b06df8fc8f3910
     }
 
     public void setupAppium() throws IOException {
@@ -141,9 +146,10 @@ public class BaseTestcase {
     }
 
     @AfterMethod
-    public void afterTest() {
-        driver.closeApp();
-        action.implicitlyWait(ConfigUtilities.Timers.fast);
+    public void afterTest() throws InterruptedException {
+        action.saveTextLog(LoggerUtilities.testlog);
+        driver.quit();
+        Thread.sleep(1000);
     }
 
     @BeforeSuite

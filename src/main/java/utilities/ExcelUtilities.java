@@ -20,9 +20,9 @@ public class ExcelUtilities {
     public static ConfigUtilities config;
     public static LoggerUtilities log;
 
-    public ExcelUtilities(ConfigUtilities config, LoggerUtilities log){
-        this.config = config;
-        this.log = log;
+    public ExcelUtilities( LoggerUtilities log, ConfigUtilities config){
+        ExcelUtilities.config = config;
+        ExcelUtilities.log = log;
     }
 
     public static String getCellValue(Cell cell) {
@@ -129,20 +129,20 @@ public class ExcelUtilities {
                 String value = getCellValue(cell);
 
                 switch (cellNo) {
-                    case 0:
+                    case 1:
                         locatorname = value.toLowerCase();
                         break;
-                    case 1:
+                    case 2:
                         tempJson1.put("type", value);
                         break;
-                    case 2:
+                    case 3:
                         tempJson1.put("locator", value);
                         tempJson.put("android", tempJson1);
                         break;
-                    case 3:
+                    case 4:
                         tempJson2.put("type", value);
                         break;
-                    case 4:
+                    case 5:
                         tempJson2.put("locator", value);
                         tempJson.put("ios", tempJson2);
                         break;
@@ -157,7 +157,7 @@ public class ExcelUtilities {
 
     }
 
-    public String[] getLocator(String key) {
+    String[] getLocator(String key) {
         String[] value = new String[2];
 
         JSONObject json = (JSONObject) locators.get(key.toLowerCase());
