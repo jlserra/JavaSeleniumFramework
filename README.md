@@ -1,2 +1,0 @@
-# SeleniumFramework
-Core Framework
