@@ -1,1 +1,1 @@
-# SGBBAPPAutomation
+# Selenium Framework

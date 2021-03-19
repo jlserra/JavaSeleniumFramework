@@ -8,13 +8,14 @@ import pageobjects.BasePage;
 
 import java.io.*;
 
-public class ConfigUtilities extends BasePage {
+public class ConfigUtilities extends BasePage{
 
-    File filePath = new File(System.getProperty("user.dir"));
-    public File resourceDirectory = new File(filePath, "src/main/resources");
-    private static String platform;
+    public static String URL = "https://demo.openmrs.org/openmrs/login.htm";
+    private static File filePath = new File(System.getProperty("user.dir"));
+    public static File resourceDirectory = new File(filePath, "src/main/resources");
+    private static String browser;
     private static String testcase;
-    private static String suitename;
+    private static String suiteName;
 
     public static JSONObject capabilities;
 
@@ -31,11 +32,11 @@ public class ConfigUtilities extends BasePage {
     }
 
     public void getProperty(){
-        if (System.getProperty("platform") != null) {
-            setPlatform(System.getProperty("platform"));
+        if (System.getProperty("browser") != null) {
+            setBrowser(System.getProperty("browser").toLowerCase());
         } else {
-            //set android as default
-            setPlatform("android");
+            //set chrome as default
+            setBrowser("chrome");
         }
     }
 
@@ -49,7 +50,7 @@ public class ConfigUtilities extends BasePage {
         Object obj = jsonParser.parse(reader);
 
         JSONObject list = (JSONObject) obj;
-        capabilities = (JSONObject) list.get(getPlatform());
+        capabilities = (JSONObject) list.get(getBrowser());
 
     }
 
@@ -61,20 +62,20 @@ public class ConfigUtilities extends BasePage {
         ConfigUtilities.testcase = testcase;
     }
 
-    public String getSuitename() {
-        return suitename;
+    public String getSuiteName() {
+        return suiteName;
     }
 
-    public void setSuitename(String suitename) {
-        ConfigUtilities.suitename = suitename;
+    public void setSuiteName(String suiteName) {
+        ConfigUtilities.suiteName = suiteName;
     }
 
-    public String getPlatform() {
-        return platform;
+    public String getBrowser() {
+        return browser;
     }
 
-    public void setPlatform(String platform) {
-        ConfigUtilities.platform = platform;
+    public void setBrowser(String browser) {
+        ConfigUtilities.browser = browser;
     }
 
     public enum Timers {
@@ -87,25 +88,26 @@ public class ConfigUtilities extends BasePage {
         slow(24000),
         verySlow(48000);
 
+        private final int value;
+
         public int getValue() {
             return value;
         }
-        private final int value;
 
         Timers(int value) {
             this.value = value;
         }
     }
 
-    public void setTestConfiguration(String suitename, String testcase){
+    public void setTestConfiguration(String suiteName, String testcase){
 
-        setSuitename(suitename);
+        setSuiteName(suiteName);
         setTestcase(testcase);
-        clearLog();
+        LoggerUtilities.clearLog();
 
-        System.setProperty("suite", suitename);
+        System.setProperty("suite", suiteName);
         System.setProperty("filename", testcase);
-        File path = new File(config.resourceDirectory, "log4j.properties");
+        File path = new File(resourceDirectory, "log4j.properties");
         PropertyConfigurator.configure(path.getAbsolutePath());
 
     }

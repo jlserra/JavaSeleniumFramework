@@ -1,14 +1,8 @@
 package utilities;
 
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,22 +12,20 @@ import java.util.concurrent.TimeUnit;
 
 public class ActionUtilities {
 
-    static final int explicitWaitDefault = 10;
-    MobileDriver driver;
-    ConfigUtilities config;
-    ExcelUtilities excel;
-    LoggerUtilities log;
+    static WebDriver driver;
+    static ConfigUtilities config;
+    static ExcelUtilities excel;
+    static LoggerUtilities log;
 
-    public ActionUtilities(MobileDriver driver, LoggerUtilities log, ConfigUtilities config, ExcelUtilities excel ) {
-        this.driver = driver;
-        this.config = config;
-        this.excel = excel;
-        this.log = log;
+    public ActionUtilities(WebDriver driver, LoggerUtilities log, ConfigUtilities config, ExcelUtilities excel ) {
+        ActionUtilities.driver = driver;
+        ActionUtilities.config = config;
+        ActionUtilities.excel = excel;
+        ActionUtilities.log = log;
     }
 
-
-    public MobileElement getElement(String key) {
-        MobileElement element = null;
+    public WebElement getElement(String key) {
+        WebElement element = null;
         String[] locator = excel.getLocator(key);
         String locatorType = locator[0];
         String locatorValue = locator[1];
@@ -43,25 +35,25 @@ public class ActionUtilities {
         try {
             switch (locatorType) {
                 case "id":
-                    element = (MobileElement) driver.findElementById(locatorValue);
+                    element = driver.findElement(By.id(locatorValue));
                     break;
                 case "xpath":
-                    element = (MobileElement) driver.findElementByXPath(locatorValue);
+                    element = driver.findElement(By.xpath(locatorValue));
                     break;
                 case "classname":
-                    element = (MobileElement) driver.findElementByClassName(locatorValue);
+                    element = driver.findElement(By.className(locatorValue));
                     break;
                 case "cssselector":
-                    element = (MobileElement) driver.findElementByCssSelector(locatorValue);
+                    element = driver.findElement(By.cssSelector(locatorValue));
                     break;
                 case "name":
-                    element = (MobileElement) driver.findElementByName(locatorValue);
+                    element = driver.findElement(By.name(locatorValue));
                     break;
                 case "linktext":
-                    element = (MobileElement) driver.findElementByLinkText(locatorValue);
+                    element = driver.findElement(By.linkText(locatorValue));
                     break;
                 case "partiallinktext":
-                    element = (MobileElement) driver.findElementByPartialLinkText(locatorValue);
+                    element = driver.findElement(By.partialLinkText(locatorValue));
                     break;
                 default:
                     log.error("Invalid locator type: " + locatorType);
@@ -71,15 +63,6 @@ public class ActionUtilities {
             log.error(e, "Unable to find element " + locatorValue);
         }
         return element;
-    }
-
-    public void click(MobileElement element) {
-        try {
-            element.click();
-            log.info("Element clicked");
-        } catch (Exception e) {
-            log.error(e, "Unable to click element");
-        }
     }
 
     public void click(String locator) {
@@ -93,15 +76,6 @@ public class ActionUtilities {
         }
     }
 
-    public void sendKeys(MobileElement element, String text) {
-        try {
-            element.sendKeys(text);
-            log.info("Text entered successfully");
-        } catch (Exception e) {
-            log.error(e, "Unable to send keys to element");
-        }
-    }
-
     public void sendKeys(String locator, String text) {
         try {
             new WebDriverWait(driver, ConfigUtilities.Timers.appStandard.getValue())
@@ -111,17 +85,6 @@ public class ActionUtilities {
         } catch (Exception e) {
             log.error(e, "Unable to enter text successfully " + text);
         }
-    }
-
-    public String getText(MobileElement element) {
-        String text = "";
-        try {
-            text = element.getText().replaceAll("[\n\r]", "");
-            log.info("Text fetched successfully");
-        } catch (Exception e) {
-            log.error(e, "Unable to get element text");
-        }
-        return text;
     }
 
     public String getText(String locator) {
@@ -137,17 +100,6 @@ public class ActionUtilities {
         return text;
     }
 
-    public Boolean isDisplayed(MobileElement element) {
-        boolean isDisplayed = false;
-        try {
-            isDisplayed = element.isDisplayed();
-            log.info("Element displayed");
-        } catch (Exception e) {
-            log.error(e, "Element not displayed");
-        }
-        return isDisplayed;
-    }
-
     public Boolean isDisplayed(String locator) {
         boolean isDisplayed = false;
         try {
@@ -160,17 +112,6 @@ public class ActionUtilities {
         return isDisplayed;
     }
 
-    public Boolean isEnabled(MobileElement element) {
-        boolean isEnabled = false;
-        try {
-            isEnabled = element.isEnabled();
-            log.info("Element enabled");
-        } catch (Exception e) {
-            log.error(e, "Element not enabled");
-        }
-        return isEnabled;
-    }
-
     public Boolean isEnabled(String locator) {
         boolean isEnabled = false;
         try {
@@ -181,16 +122,6 @@ public class ActionUtilities {
             log.error(e, "Element is not enabled with locator " + locator);
         }
         return isEnabled;
-    }
-
-    public void waitForElementToBeVisible(MobileElement element) {
-        try {
-            new WebDriverWait(driver, explicitWaitDefault)
-                    .until(ExpectedConditions.visibilityOf(element));
-            log.info("Element now visible");
-        } catch (Exception e) {
-            log.error(e, "Element not visible");
-        }
     }
 
     public Boolean waitForElementToBeVisible(String locator, ConfigUtilities.Timers timers) {
@@ -215,22 +146,12 @@ public class ActionUtilities {
         driver.manage().timeouts().implicitlyWait(timer.getValue(), TimeUnit.MILLISECONDS);
     }
 
-    public void waitForElementToBeClickable(MobileElement element) {
-        try {
-            new WebDriverWait(driver, explicitWaitDefault)
-                    .until(ExpectedConditions.elementToBeClickable(element));
-            log.info("Element now clickable");
-        } catch (Exception e) {
-            log.error(e, "Element not clickable");
-        }
-    }
-
-    public Boolean waitForElementToBeClickable(String key, ConfigUtilities.Timers timer) {
+    public Boolean waitForElementToBeClickable(String locator, ConfigUtilities.Timers timer) {
         boolean clickable = false;
         try {
-            log.info("Waiting for element to be clickable " + key);
+            log.info("Waiting for element to be clickable " + locator);
             clickable = new WebDriverWait(driver, timer.getValue())
-                    .until(ExpectedConditions.elementToBeClickable(getElement(key)))
+                    .until(ExpectedConditions.elementToBeClickable(getElement(locator)))
                     .isEnabled();
             log.info("Element now clickable");
         } catch (Exception e) {
@@ -239,37 +160,17 @@ public class ActionUtilities {
         return clickable;
     }
 
-    public void waitForElementToBeSelected(MobileElement element) {
-        try {
-            new WebDriverWait(driver, explicitWaitDefault)
-                    .until(ExpectedConditions.elementToBeSelected(element));
-            log.info("Element now selected");
-        } catch (Exception e) {
-            log.error(e, "Element not selected");
-        }
-    }
-
-    public void waitForElementToBeInvisible(MobileElement element) {
-        try {
-            new WebDriverWait(driver, explicitWaitDefault)
-                    .until(ExpectedConditions.invisibilityOf(element));
-            log.info("Element now invisible");
-        } catch (Exception e) {
-            log.error(e, "Element not invisible");
-        }
-    }
-
     public void takeSnapShot(String description) throws IOException {
 
-        String testname = config.getTestcase();
-        String suitename = config.getSuitename();
+        String testName = config.getTestcase();
+        String suiteName = config.getSuiteName();
 
         // Convert web driver object to TakeScreenshot
         TakesScreenshot scrShot = ((TakesScreenshot) driver);
         // Call getScreenshotAs method to create image file
         File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
         // Move image file to new destination
-        File DestFile = new File("./screenshots/" + suitename + "/" + testname + "/" + testname + " - " + description + ".png");
+        File DestFile = new File("./screenshots/" + suiteName + "/" + testName + "/" + testName + " - " + description + ".png");
         // Copy file at destination
         FileUtils.copyFile(SrcFile, DestFile);
 
@@ -282,66 +183,8 @@ public class ActionUtilities {
     }
 
     @Attachment(value = "Logs", type = "text/plain")
-    public String saveTextLog(String message) {
+    public static String saveTextLog(String message) {
         return message;
     }
-
-    public void swipe(Direction dir) {
-
-        Dimension dim = driver.manage().window().getSize();
-        int height = dim.getHeight();
-        int width = dim.getWidth();
-        int startx = 0, starty = 0, endx = 0, endy = 0;
-
-        switch (dir) {
-            case UP:
-                startx = (int) (width * .50);
-                starty = (int) (height * .95);
-                endx = (int) (width * .50);
-                endy = (int) (height * .05);
-                break;
-            case DOWN:
-                startx = (int) (width * .50);
-                starty = (int) (height * .05);
-                endx = (int) (width * .50);
-                endy = (int) (height * .95);
-                break;
-            case LEFT:
-                startx = (int) (width * .95);
-                starty = (int) (height * .50);
-                endx = (int) (width * .05);
-                endy = (int) (height * .50);
-                break;
-            case RIGHT:
-                startx = (int) (width * .05);
-                starty = (int) (height * .50);
-                endx = (int) (width * .95);
-                endy = (int) (height * .50);
-                break;
-            default:
-                break;
-        }
-
-        TouchAction action = new TouchAction(driver);
-        action.longPress(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, endy)).release().perform();
-        log.info("Swiping " + dir);
-
-    }
-
-    public MobileElement findElementBy(String loc) {
-        return (MobileElement) driver.findElementByXPath(loc);
-    }
-
-    public void clearTextField(MobileElement textfield) {
-        textfield.clear();
-    }
-
-    public enum Direction {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
-
 
 }

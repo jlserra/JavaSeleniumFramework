@@ -15,10 +15,10 @@ import java.util.Iterator;
 
 public class ExcelUtilities {
 
-    public static JSONObject testData = new JSONObject();
-    public static JSONObject locators = new JSONObject();
-    public static ConfigUtilities config;
-    public static LoggerUtilities log;
+    private static JSONObject testData = new JSONObject();
+    private static JSONObject locators = new JSONObject();
+    static ConfigUtilities config;
+    static LoggerUtilities log;
 
     public ExcelUtilities( LoggerUtilities log, ConfigUtilities config){
         ExcelUtilities.config = config;
@@ -52,7 +52,7 @@ public class ExcelUtilities {
 
     public void readTestdata() throws IOException {
 
-        File path = new File(config.resourceDirectory, "Testdata.xlsx");
+        File path = new File(ConfigUtilities.resourceDirectory, "Testdata.xlsx");
         FileInputStream inputStream = new FileInputStream(path.getAbsolutePath());
 
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
@@ -120,7 +120,6 @@ public class ExcelUtilities {
             int cellNo = 0;
             JSONObject tempJson = new JSONObject();
             JSONObject tempJson1 = new JSONObject();
-            JSONObject tempJson2 = new JSONObject();
             String locatorname = "";
 
             while (cellIterator.hasNext()) {
@@ -133,37 +132,25 @@ public class ExcelUtilities {
                         locatorname = value.toLowerCase();
                         break;
                     case 2:
-                        tempJson1.put("type", value);
+                        tempJson.put("type", value);
                         break;
                     case 3:
-                        tempJson1.put("locator", value);
-                        tempJson.put("android", tempJson1);
-                        break;
-                    case 4:
-                        tempJson2.put("type", value);
-                        break;
-                    case 5:
-                        tempJson2.put("locator", value);
-                        tempJson.put("ios", tempJson2);
-                        break;
-                    default:
+                        tempJson.put("locator", value);
                         break;
                 }
-
                 cellNo++;
             }
             locators.put(locatorname, tempJson);
         }
-
+        System.out.println(locators);
     }
 
-    String[] getLocator(String key) {
+    public String[] getLocator(String key) {
         String[] value = new String[2];
 
         JSONObject json = (JSONObject) locators.get(key.toLowerCase());
-        JSONObject json1 = (JSONObject) json.get(config.getPlatform().toLowerCase());
-        value[0] = (String) json1.get("type");
-        value[1] = (String) json1.get("locator");
+        value[0] = (String) json.get("type");
+        value[1] = (String) json.get("locator");
 
         return value;
     }

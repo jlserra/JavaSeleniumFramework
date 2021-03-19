@@ -10,7 +10,7 @@ public class LoggerUtilities {
     public static Logger log = Logger.getLogger("test");
     public static String testlog;
 
-    public void clearLog(){
+    public static void clearLog(){
         testlog = "";
     }
 
