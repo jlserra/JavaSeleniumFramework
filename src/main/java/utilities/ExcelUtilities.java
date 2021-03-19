@@ -52,7 +52,7 @@ public class ExcelUtilities {
 
     public void readTestdata() throws IOException {
 
-        File path = new File(config.resourceDirectory, "Testdata_old.xlsx");
+        File path = new File(config.resourceDirectory, "Testdata.xlsx");
         FileInputStream inputStream = new FileInputStream(path.getAbsolutePath());
 
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
@@ -105,7 +105,7 @@ public class ExcelUtilities {
 
         File filePath = new File(System.getProperty("user.dir"));
         File fileDir = new File(filePath, "src/main/resources");
-        File path = new File(fileDir, "Testdata_old.xlsx");
+        File path = new File(fileDir, "Testdata.xlsx");
         FileInputStream inputStream = new FileInputStream(path.getAbsolutePath());
 
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);

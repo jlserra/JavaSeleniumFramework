@@ -84,6 +84,7 @@ public class SecureAppPage extends BasePage {
     public void clickBtnNext(){
         log.info("Step: Click Button Next");
         action.click(btnNext);
+        action.implicitlyWait(ConfigUtilities.Timers.quick);
     }
 
     @Step("Step: Verify if Button next is enabled")
