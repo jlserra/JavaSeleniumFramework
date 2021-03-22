@@ -6,7 +6,6 @@ allure-results
 screenshots
 logs
 .DS_Store
-<<<<<<< HEAD
-SGBBAPPAutomation.iml
+SeleniumFramework.iml
 allure-report
 

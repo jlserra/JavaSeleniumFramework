@@ -2,8 +2,6 @@ package utilities;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import pageobjects.BasePage;
 
 import java.io.*;
@@ -23,7 +21,6 @@ public class ConfigUtilities extends BasePage{
 
         try {
             getProperty();
-            getCapabilities();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -38,20 +35,6 @@ public class ConfigUtilities extends BasePage{
             //set chrome as default
             setBrowser("chrome");
         }
-    }
-
-    public void getCapabilities() throws IOException, ParseException {
-
-        File path = new File(resourceDirectory, "capabilities.json");
-
-        JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader(path.getAbsolutePath());
-
-        Object obj = jsonParser.parse(reader);
-
-        JSONObject list = (JSONObject) obj;
-        capabilities = (JSONObject) list.get(getBrowser());
-
     }
 
     public String getTestcase() {
