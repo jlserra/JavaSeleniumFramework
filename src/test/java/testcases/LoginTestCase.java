@@ -13,7 +13,7 @@ public class LoginTestCase extends BaseTestcase {
     @Severity(SeverityLevel.NORMAL)
     @Description("Test Description: User will be logged in to the system")
     @Story("Story: Login")
-    public void loginUser() {
+    public void loginUser() throws Exception {
         assertTrue(loginPage.loginAsInpatientWard());
 }
 

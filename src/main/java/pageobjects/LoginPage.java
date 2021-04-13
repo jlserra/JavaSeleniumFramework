@@ -12,13 +12,13 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Step: Enter username")
-    public void enterUsername() {
+    public void enterUsername() throws Exception {
         log.info("Step: Enter username");
         action.sendKeys("txtUsername", excel.getTestdata("username"));
     }
 
     @Step("Step: Enter password")
-    public void enterPassword() {
+    public void enterPassword() throws Exception {
         log.info("Step: Enter password");
         action.sendKeys("txtPassword", excel.getTestdata("password"));
     }
@@ -35,12 +35,28 @@ public class LoginPage extends BasePage {
         action.click("lblInpatientWard");
     }
 
+    @Step("Step: Select Inpatient Ward")
+    public void selectIsolationWard() {
+        log.info("Step: Select Inpatient Ward");
+        action.click("lblInpatientWard");
+    }
+
     @Step("Login using credentials and select location")
-    public boolean loginAsInpatientWard() {
+    public boolean loginAsInpatientWard() throws Exception {
         log.info("Login using credentials and select location");
         enterUsername();
         enterPassword();
         selectInpatientWard();
+        clickBtnLogin();
+        return true;
+    }
+
+    @Step("Login using credentials and select location")
+    public boolean loginAsIsolationWard() throws Exception {
+        log.info("Login using credentials and select location");
+        enterUsername();
+        enterPassword();
+        selectIsolationWard();
         clickBtnLogin();
         return true;
     }

@@ -24,7 +24,7 @@ public class ActionUtilities {
         ActionUtilities.log = log;
     }
 
-    public WebElement getElement(String key) {
+    public WebElement getElement(String key) throws Exception {
         WebElement element = null;
         String[] locator = excel.getLocator(key);
         String locatorType = locator[0];
