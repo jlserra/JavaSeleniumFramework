@@ -35,13 +35,13 @@ public class BaseTestcase {
     //    Pages Initialization
     public void initializePages() {
 //    Initialize Utilities
-        log = new LoggerUtilities();
-        excel = new ExcelUtilities(log, config);
+//        log = new LoggerUtilities();
+//        excel = new ExcelUtilities(log, config);
         action = new ActionUtilities(driver, log, config, excel);
 
 //        Initialize Pages
         basePage = new BasePage(driver, action, log, config, excel);
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
 
     }
 

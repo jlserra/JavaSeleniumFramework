@@ -1,15 +1,8 @@
 package pageobjects;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
-
-    static WebDriver driver;
-
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-    }
 
     @Step("Step: Enter username")
     public void enterUsername() throws Exception {

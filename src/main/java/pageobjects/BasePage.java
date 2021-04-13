@@ -22,7 +22,7 @@ public class BasePage {
         BasePage.log = log;
     }
 
-    public BasePage() {
-        super();
+    public BasePage(){
+
     }
 }
