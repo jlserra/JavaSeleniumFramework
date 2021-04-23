@@ -9,13 +9,11 @@ import java.io.*;
 public class ConfigUtilities extends BasePage{
 
     public static String URL = "https://demo.openmrs.org/openmrs/login.htm";
-    private static File filePath = new File(System.getProperty("user.dir"));
+    private static final File filePath = new File(System.getProperty("user.dir"));
     public static File resourceDirectory = new File(filePath, "src/main/resources");
     private static String browser;
     private static String testcase;
     private static String suiteName;
-
-    public static JSONObject capabilities;
 
     public ConfigUtilities() {
 

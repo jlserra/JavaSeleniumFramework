@@ -15,8 +15,8 @@ import java.util.Iterator;
 
 public class ExcelUtilities {
 
-    private static JSONObject testData = new JSONObject();
-    private static JSONObject locators = new JSONObject();
+    private static final JSONObject testData = new JSONObject();
+    private static final JSONObject locators = new JSONObject();
     static ConfigUtilities config;
     static LoggerUtilities log;
 

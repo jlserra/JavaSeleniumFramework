@@ -17,19 +17,19 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Step: Click Login Button")
-    public void clickBtnLogin() {
+    public void clickBtnLogin() throws Exception {
         log.info("Step: Click Login Button");
         action.click("btnLogin");
     }
 
     @Step("Step: Select Inpatient Ward")
-    public void selectInpatientWard() {
+    public void selectInpatientWard() throws Exception {
         log.info("Step: Select Inpatient Ward");
         action.click("lblInpatientWard");
     }
 
     @Step("Step: Select Inpatient Ward")
-    public void selectIsolationWard() {
+    public void selectIsolationWard() throws Exception {
         log.info("Step: Select Isolation Ward");
         action.click("lblIsolationWard");
     }
