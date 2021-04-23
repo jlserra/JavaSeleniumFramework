@@ -178,7 +178,7 @@ public class ActionUtilities {
     }
 
     @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] saveScreenshotPNG() {
+    private byte[] saveScreenshotPNG() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 

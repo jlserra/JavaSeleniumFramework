@@ -22,7 +22,7 @@ public class LoginTestCase extends BaseTestcase {
     @Description("Test Description: User will be logged in to the system")
     @Story("Story: Login2")
     public void loginUser2() throws Exception {
-        assertTrue(loginPage.loginAsInpatientWard());
+        assertTrue(loginPage.loginAsIsolationWard());
     }
 
 }

@@ -30,27 +30,29 @@ public class LoginPage extends BasePage {
 
     @Step("Step: Select Inpatient Ward")
     public void selectIsolationWard() {
-        log.info("Step: Select Inpatient Ward");
-        action.click("lblInpatientWard");
+        log.info("Step: Select Isolation Ward");
+        action.click("lblIsolationWard");
     }
 
-    @Step("Login using credentials and select location")
+    @Step("Login using credentials in Inpatient Ward")
     public boolean loginAsInpatientWard() throws Exception {
-        log.info("Login using credentials and select location");
+        log.info("Login using credentials in Inpatient Ward");
         enterUsername();
         enterPassword();
         selectInpatientWard();
         clickBtnLogin();
+        action.takeSnapShot("loginAsInpatientWard");
         return true;
     }
 
-    @Step("Login using credentials and select location")
+    @Step("Login using credentials in Isolation Ward")
     public boolean loginAsIsolationWard() throws Exception {
-        log.info("Login using credentials and select location");
+        log.info("Login using credentials in Isolation Ward");
         enterUsername();
         enterPassword();
         selectIsolationWard();
         clickBtnLogin();
+        action.takeSnapShot("loginAsIsolationWard");
         return true;
     }
 
