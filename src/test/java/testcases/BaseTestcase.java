@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.*;
+import org.apache.commons.io.FileUtils;
 
 import pageobjects.*;
 
@@ -73,12 +74,16 @@ public class BaseTestcase {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
         }
-        driver.get((ConfigUtilities.URL));
+        driver.get(config.getURL());
+    }
+
+    public void downloadExcel() throws IOException {
+        FileUtils.copyURLToFile(config.getExcelFileURL(), new File("src/main/resources/Testdata.xlsx"));
     }
 
 
     @BeforeMethod
-    public void beforeTest() {
+    public void beforeTest() throws IOException {
         initializeBrowserDriver();
         initializePages();
     }
@@ -92,6 +97,7 @@ public class BaseTestcase {
 
     @BeforeSuite
     public void beforeSuite() throws IOException {
+        downloadExcel();
         excel.readTestdata();
         excel.readLocators();
     }

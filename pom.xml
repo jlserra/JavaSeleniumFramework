@@ -5,7 +5,10 @@
 
     <properties>
         <aspectj.version>1.9.4</aspectj.version>
-        <allure.version>1.5.4</allure.version>
+        <browser>chrome</browser>
+        <url>https://demo.openmrs.org/openmrs/login.htm</url>
+        <excelFileUrl>https://docs.google.com/spreadsheets/d/1c5DwobIkMU1Rq-gtY2s6DTfXBXyJO5Ed-g7o_hDDyCk/export?format=xlsx</excelFileUrl>
+        <suiteFile>testng.xml</suiteFile>
     </properties>
 
     <modelVersion>4.0.0</modelVersion>
@@ -30,6 +33,8 @@
                 <configuration>
                     <systemPropertyVariables>
                         <browser>${browser}</browser>
+                        <url>${url}</url>
+                        <excelFileUrl>${excelFileUrl}</excelFileUrl>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
