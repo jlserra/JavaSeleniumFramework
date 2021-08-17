@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ActionUtilities {
@@ -70,6 +71,17 @@ public class ActionUtilities {
         }
         return by;
     }
+
+    public WebElement getElement(String locator) throws Exception {
+        WebElement element = driver.findElement(getLocator(locator));
+        return element;
+    }
+
+    public List<WebElement> getElements(String locator) throws Exception {
+        List<WebElement> elements = driver.findElements(getLocator(locator));
+        return elements;
+    }
+
 
     public void click(String locator) throws Exception {
         try {
@@ -194,6 +206,16 @@ public class ActionUtilities {
     @Attachment(value = "Screenshot", type = "image/png")
     private byte[] saveScreenshotPNG() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+    public void scrollIntoElement(String locator) throws Exception {
+
+        Boolean isVisible = waitForElementToBeVisible(locator, ConfigUtilities.Timers.appStandard);
+
+        if(isVisible){
+            log.info("Scrolling into element" + locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getElement(locator));
+        }
     }
 
 }
