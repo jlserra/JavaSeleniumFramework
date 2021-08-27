@@ -3,6 +3,7 @@ package utilities;
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -73,15 +74,30 @@ public class ActionUtilities {
     }
 
     public WebElement getElement(String locator) throws Exception {
-        WebElement element = driver.findElement(getLocator(locator));
-        return element;
+        WebElement webElement;
+        try {
+            webElement = new WebDriverWait(driver, ConfigUtilities.Timers.appStandard.getValue())
+                    .until(ExpectedConditions.visibilityOfElementLocated(getLocator(locator)));
+            log.info("Successfully got element : " + locator);
+        } catch (Exception e) {
+            log.error(e, "Unable to get element " + locator);
+            throw new Exception("Unable to get element " + locator);
+        }
+        return webElement;
     }
 
     public List<WebElement> getElements(String locator) throws Exception {
-        List<WebElement> elements = driver.findElements(getLocator(locator));
-        return elements;
+        List<WebElement> webElements;
+        try {
+            webElements = new WebDriverWait(driver, ConfigUtilities.Timers.appStandard.getValue())
+                    .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getLocator(locator)));
+            log.info("Successfully got elements : " + locator);
+        } catch (Exception e) {
+            log.error(e, "Unable to get elements " + locator);
+            throw new Exception("Unable to get elements " + locator);
+        }
+        return webElements;
     }
-
 
     public void click(String locator) throws Exception {
         try {
@@ -213,8 +229,19 @@ public class ActionUtilities {
         Boolean isVisible = waitForElementToBeVisible(locator, ConfigUtilities.Timers.appStandard);
 
         if(isVisible){
-            log.info("Scrolling into element" + locator);
+            log.info("Scrolling into element with locator: " + locator);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getElement(locator));
+        }
+    }
+
+    public void mouseHover(String locator) throws Exception {
+
+        Boolean isVisible = waitForElementToBeVisible(locator, ConfigUtilities.Timers.appStandard);
+
+        if(isVisible){
+            log.info("Mouse Hovering into element with locator: " + locator);
+            Actions action = new Actions(driver);
+            action.moveToElement(getElement(locator)).perform();
         }
     }
 

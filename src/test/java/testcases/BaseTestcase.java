@@ -36,8 +36,8 @@ public class BaseTestcase {
     //    Pages Initialization
     public void initializePages() {
 //    Initialize Utilities
-//        log = new LoggerUtilities();
-//        excel = new ExcelUtilities(log, config);
+        log = new LoggerUtilities();
+        excel = new ExcelUtilities(log, config);
         action = new ActionUtilities(driver, log, config, excel);
 
 //        Initialize Pages
@@ -100,6 +100,7 @@ public class BaseTestcase {
         downloadExcel();
         excel.readTestdata();
         excel.readLocators();
+        excel.readCopyDeck();
     }
 }
 

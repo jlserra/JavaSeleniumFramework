@@ -2,21 +2,25 @@ package utilities;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ExcelUtilities {
 
     private static final JSONObject testData = new JSONObject();
     private static final JSONObject locators = new JSONObject();
+    private static final JSONObject copyDeck = new JSONObject();
     static ConfigUtilities config;
     static LoggerUtilities log;
 
@@ -78,7 +82,7 @@ public class ExcelUtilities {
                 }
 
                 if (value.contains("=")) {
-                    String[] keyValue = getCellValue(cell).split("=");
+                    String[] keyValue = getCellValue(cell).split("=", 1);
                     tempJson.put(keyValue[0].toLowerCase(), keyValue[1]);
                 }
 
@@ -86,7 +90,7 @@ public class ExcelUtilities {
             }
             testData.put(testcasename, tempJson);
         }
-
+        inputStream.close();
     }
 
     public String getTestdata(String testdata) throws Exception {
@@ -104,9 +108,7 @@ public class ExcelUtilities {
 
     public void readLocators() throws IOException {
 
-        File filePath = new File(System.getProperty("user.dir"));
-        File fileDir = new File(filePath, "src/main/resources");
-        File path = new File(fileDir, "Testdata.xlsx");
+        File path = new File(ConfigUtilities.resourceDirectory, "Testdata.xlsx");
         FileInputStream inputStream = new FileInputStream(path.getAbsolutePath());
 
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
@@ -120,7 +122,6 @@ public class ExcelUtilities {
 
             int cellNo = 0;
             JSONObject tempJson = new JSONObject();
-            JSONObject tempJson1 = new JSONObject();
             String locatorname = "";
 
             while (cellIterator.hasNext()) {
@@ -143,7 +144,7 @@ public class ExcelUtilities {
             }
             locators.put(locatorname, tempJson);
         }
-        System.out.println(locators);
+        inputStream.close();
     }
 
     public String[] getLocator(String key) throws Exception {
@@ -158,6 +159,64 @@ public class ExcelUtilities {
         }
 
         return value;
+    }
+
+    public void readCopyDeck() throws IOException {
+
+        File path = new File(ConfigUtilities.resourceDirectory, "Testdata.xlsx");
+        FileInputStream inputStream = new FileInputStream(path.getAbsolutePath());
+
+        XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+
+        ArrayList<String> array;
+        for ( Sheet sheet : workbook) {
+
+            String sheetname = sheet.getSheetName();
+            array = new ArrayList<>();
+
+            for (Row cells : sheet) {
+
+                XSSFRow row = (XSSFRow) cells;
+
+                Iterator<Cell> cellIterator = row.cellIterator();
+
+                int cellNo = 0;
+
+                while (cellIterator.hasNext()) {
+
+                    XSSFCell cell = (XSSFCell) cellIterator.next();
+                    String value = getCellValue(cell);
+
+                    switch (cellNo) {
+                        case 3:
+                            if(!value.equals("")){
+                                array.add(value);
+                            }
+                            break;
+                    }
+                    cellNo++;
+                }
+            }
+
+            if (!sheetname.equals("Testdata") && !sheetname.equals("Locators")){
+                copyDeck.put( sheet.getSheetName() , array);
+            }
+
+        }
+        inputStream.close();
+    }
+
+    public boolean compare(String sheetname, String actualText){
+        Boolean isMatch = false;
+
+        JSONArray array = (JSONArray) copyDeck.get(sheetname);
+        
+        for (Object copydeck: array) {
+            if(copydeck.toString().equals(actualText)){
+                isMatch=true;
+            };
+        }
+        return isMatch;
     }
 
 }
